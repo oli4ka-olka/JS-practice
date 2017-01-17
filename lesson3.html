@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+        var N = 20;
+        var a = Array(N);
+        var max, min, sum, sr
+
+        //доп.задание Создайте массив размерностью N элементов, выведите все элементы массива в обратном порядке.
+        for (var i = 0; i < a.length; i++) {
+            a[i] = Math.floor(Math.random() * (30 - 5 + 1)) + 5;
+        }
+        document.write("Исходный массив", "</br>");
+        document.write(a.join(" "), "</br>");
+        a.reverse();
+        document.write("Массив в обратном порядке", "</br>");
+        document.write(a.join(" "), "<hr\>");
+
+        //создать массив размерностью N элементов, заполнить его произвольными целыми значениями. Вывести наибольшее значение массива, наименьшее значение массива, общую сумму элементов, среднее арифметическое всех элементов, вывести все нечетные значения.
+        for (var i = 0; i < a.length; i++) {
+            a[i] = Math.floor(Math.random() * (30 - 5 + 1)) + 5;
+        }
+        document.write("Исходный массив", "</br>");
+        document.write(a.join(" "), "</br>");
+        max = Number.MIN_VALUE;
+        min = Number.MAX_VALUE;
+        sum = 0;
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] > max) { max = a[i] };
+            if (a[i] < min) { min = a[i] };
+            sum = sum + a[i];
+        }
+        sr = sum / a.length;
+
+        document.write("Максимальный ", max, "</br>");
+
+        document.write("Минимальный ", min, "</br>");
+
+        document.write("Общая сумма элементов ", sum, "</br>");
+
+        document.write("Среднее арифметическое всех элементов ", sr, "</br>");
+
+        document.write("Не четные значения ");
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] % 2 != 0) { document.write(a[i], " "); };
+
+        }
+
+        //уникальный нечетные
+        document.write("</br>");
+        a.sort(function (a, b) {
+            return a - b
+        });
+        
+        document.write("Уникальные не четные значения ");
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] % 2 != 0  &&  a[i-1]!=a[i]) { document.write(a[i], " "); };
+        }
+
+        //Требуется: создать двумерный массив элементов размерностью 5х5 и заполнить его произвольными целочисленными значениями.  По главной диагонали все числа со знаком (-) заменить на 0, а числа со знаком (+) на число 1
+        var b = Array(5);
+        for (var i = 0; i < 5; i++) {
+            b[i] = Array(5);
+        };
+
+        for (i = 0; i < b.length; i++) {
+            for (var j = 0; j < b[i].length; j++) {
+                b[i][j] = Math.floor(Math.random() * 100 - 100 * Math.random());
+            }
+        }
+        b[1][1] = 0;
+
+        document.write("<hr\>", "Исходный массив", "</br>")
+        document.write("<table>");
+        for (i = 0; i < b.length; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < b[i].length; j++) {
+                document.write("<td>", b[i][j], "</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table></br>");
+       
+
+        document.write("Обработанный массив", "</br>")
+        document.write("<table>");
+        for (i = 0; i < b.length; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < b[i].length; j++) {
+                if (i == j && b[i][j] < 0) { b[i][j] = -1 };
+                if (i == j && b[i][j] > 0) { b[i][j] = 1 };
+                document.write("<td>", b[i][j], "</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+
+    <style>
+        td {
+            border:1px dotted;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+</body>
+</html>
